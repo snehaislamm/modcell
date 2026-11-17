@@ -1,0 +1,10 @@
+// Start auto on the START PB rising edge if safety is OK and no alarm is active.
+XIC(I_StartPB)ONS(Mode.StartONS)XIC(Saf.OK)XIO(Alm.Any)OTL(Mode.Auto);
+// STOP PB (NC input, 0 = pressed) requests an end-of-cycle stop instead of stopping mid-part.
+XIO(I_StopPB)XIC(Mode.Auto)OTL(Mode.CycleStopReq);
+// Cycle stop completes when the sequence is back at Wait For Part (step 10).
+XIC(Mode.CycleStopReq)EQU(Seq.Step,10)[OTU(Mode.Auto) ,OTU(Mode.CycleStopReq) ];
+// Safety loss or any alarm drops auto immediately.
+[XIO(Saf.OK) ,XIC(Alm.Any) ]OTU(Mode.Auto);
+// Sequence permissive: transitions and handshakes only advance in auto with safety OK.
+XIC(Mode.Auto)XIC(Saf.OK)OTE(Seq.Permit);

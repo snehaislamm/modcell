@@ -1,0 +1,6 @@
+// Run the conveyor while waiting for a part (until it reaches the stop) and while releasing.
+[EQU(Seq.Step,10)XIO(I_PE_AtStop) ,EQU(Seq.Step,60) ]XIC(Seq.Permit)XIO(I_Conv_Fault)OTE(O_Conv_Run);
+// Speed reference (% of max) to the VFD while running.
+XIC(O_Conv_Run)MOV(Conv.SpeedSet,O_Conv_SpeedRef);
+// Zero speed reference when stopped.
+XIO(O_Conv_Run)MOV(0,O_Conv_SpeedRef);

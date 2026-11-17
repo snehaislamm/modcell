@@ -1,0 +1,30 @@
+tag,type,device,signal,notes
+I_EStop_A,DI 24VDC,E-stop PB (2 NC),channel A,"to safety relay; PLC monitor copy"
+I_EStop_B,DI 24VDC,E-stop PB (2 NC),channel B,"to safety relay; PLC monitor copy"
+I_Door_A,DI 24VDC,Guard door interlock (coded),channel A,"to safety relay"
+I_Door_B,DI 24VDC,Guard door interlock (coded),channel B,"to safety relay"
+I_SafetyResetPB,DI 24VDC,Blue illuminated PB,NO,"manual reset, outside guarded space"
+I_StartPB,DI 24VDC,Green PB,NO,
+I_StopPB,DI 24VDC,Red PB,NC,"0 = pressed (wire-break safe)"
+I_FaultResetPB,DI 24VDC,Blue PB,NO,
+I_PE_Entry,DI 24VDC,Photo-eye (PNP),NO,
+I_PE_AtStop,DI 24VDC,Photo-eye (PNP),NO,"200 ms debounce in logic"
+I_Clamp_Ext,DI 24VDC,Reed switch,NO,
+I_Clamp_Ret,DI 24VDC,Reed switch,NO,
+I_Gate_Ext,DI 24VDC,Reed switch,NO,"gate up = blocking"
+I_Gate_Ret,DI 24VDC,Reed switch,NO,
+I_Conv_Fault,DI 24VDC,VFD relay output,NO,
+I_Vis_Ready / Busy / Done / Pass,EtherNet/IP,Smart camera,assembly bits,
+Vis_OffX / Vis_OffY,EtherNet/IP,Smart camera,INT 0.1 mm,"2D guidance"
+I_Rob_Ready / Busy / Done / OK,EtherNet/IP,Robot controller,assembly bits,
+O_Rob_CycleStart / Rob_Job / Rob_OffX / Rob_OffY,EtherNet/IP,Robot controller,assembly,
+O_Rob_Enable,DO,Robot external auto-stop,"safety relay contact in series",
+O_Conv_Run / O_Conv_SpeedRef,EtherNet/IP,VFD,run bit + speed %,
+O_Conv_SafeEnable,DO,VFD STO,"safety relay contact in series",
+O_Clamp_ExtSol / O_Clamp_RetSol,DO 24VDC,5/2 double solenoid valve,,
+O_Gate_ExtSol / O_Gate_RetSol,DO 24VDC,5/2 double solenoid valve,,
+O_Valve_Dump,DO 24VDC,Safety dump valve,"safety relay contact in series",
+O_Divert_Reject,DO 24VDC,Diverter solenoid,,
+O_Vis_Trigger,EtherNet/IP,Smart camera,trigger bit,
+O_Light_Green / Amber / Red,DO 24VDC,Stack light,,
+MES.Req / MES.Ack / MES.Serial / MES.Result / MES.CycleMs,Tag interface,MES,handshake + record,"results: 1 good, 2 vision reject, 3 fastening NOK"

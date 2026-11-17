@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>MODCELL ST10 - Module Fastening</title><style>
+body{background:#d4d4d4;font:14px Arial,sans-serif;color:#222;margin:0;padding:16px}
+h1{font-size:18px;margin:0 0 8px} .ab{padding:10px;margin-bottom:10px;font-weight:bold}
+.hi{background:#e8a33d;color:#000;border-left:8px solid #b00}
+.row{display:flex;gap:12px} .card{background:#e6e6e6;border:1px solid #aaa;padding:10px;flex:1}
+.st{display:inline-block;width:74px;text-align:center;padding:6px 0;margin:2px;background:#ccc;border:1px solid #999;font-size:12px}
+.on{background:#fff;border:2px solid #333;font-weight:bold} .big{font-size:22px;font-weight:bold}
+table{border-collapse:collapse;width:100%} td{padding:3px 6px;border-bottom:1px solid #ccc}
+.v1{font-weight:bold} .v0{color:#777}
+</style></head><body>
+<h1>MODCELL ST10 - Module Fastening</h1><div class="ab hi">SAFETY CIRCUIT OPEN - check E-stops / guard door, then press SAFETY RESET</div>
+<div class="card"><b>Sequence</b><br><div class="st">00<br>Home</div><div class="st">10<br>Wait part</div><div class="st">20<br>Clamp</div><div class="st">30<br>Inspect</div><div class="st on">40<br>Fasten</div><div class="st">50<br>Unclamp</div><div class="st">60<br>Release</div><div class="st">70<br>Report</div></div><br>
+<div class="row">
+ <div class="card"><b>Waiting on</b><div class="big">Safety circuit not reset</div>
+  <div>Check: E-stops pulled out, guard door closed, press SAFETY RESET</div></div>
+ <div class="card"><b>Shift</b><table><tr><td>Total</td><td>40</td></tr>
+  <tr><td>Good</td><td>37</td></tr><tr><td>Reject</td><td>3</td></tr>
+  <tr><td>First-pass yield</td><td>92.5%</td></tr>
+  <tr><td>Last cycle</td><td>6.08 s</td></tr></table></div>
+ <div class="card"><b>Key I/O</b><table><tr><td>Part at stop</td><td class="v1">ON</td></tr><tr><td>Clamp extended</td><td class="v1">ON</td></tr>
+  <tr><td>Gate up</td><td class="v1">ON</td></tr><tr><td>Robot busy</td><td class="v0">off</td></tr><tr><td>Vision pass</td><td class="v1">ON</td></tr>
+  <tr><td>Conveyor run</td><td class="v0">off</td></tr><tr><td>Safety OK</td><td class="v0">off</td></tr></table></div>
+</div></body></html>

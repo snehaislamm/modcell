@@ -1,0 +1,4 @@
+// Request fastening job 1 (6 fasteners) once the robot is ready; drop when done.
+EQU(Seq.Step,40)XIC(Seq.Permit)XIC(I_Rob_Ready)XIO(I_Rob_Done)[MOV(1,Rob_Job) ,OTE(O_Rob_CycleStart) ];
+// Robot watchdog: cycle must finish within 8 s.
+EQU(Seq.Step,40)XIC(Seq.Permit)TON(Rob.Tmo,8000,0);

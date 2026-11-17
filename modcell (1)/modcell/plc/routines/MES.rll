@@ -1,0 +1,4 @@
+// Load the part record and raise MES request in step 70 until acknowledged.
+EQU(Seq.Step,70)XIO(MES.Ack)[MOV(Seq.Result,MES.Result) ,MOV(Seq.CycleMs,MES.CycleMs) ,ADD(Cnt.Total,1,MES.Serial) ,OTE(MES.Req) ];
+// MES watchdog: no acknowledge within 2 s.
+EQU(Seq.Step,70)TON(MES.Tmo,2000,0);

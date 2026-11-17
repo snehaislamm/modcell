@@ -1,0 +1,28 @@
+// Stack light green: running in auto with no alarm.
+XIC(Mode.Auto)XIO(Alm.Any)OTE(O_Light_Green);
+// Stack light amber: safe and fault-free but not in auto (operator action needed).
+XIC(Saf.OK)XIO(Alm.Any)XIO(Mode.Auto)OTE(O_Light_Amber);
+// Stack light red: alarm active or safety circuit not reset.
+[XIC(Alm.Any) ,XIO(Saf.OK) ]OTE(O_Light_Red);
+// HMI "waiting on" code by step (text table in hmi/wait_codes.json). Later rungs take priority.
+EQU(Seq.Step,0)MOV(1,HMI.WaitCode);
+// Step 10: waiting for a part at the stop.
+EQU(Seq.Step,10)MOV(10,HMI.WaitCode);
+// Step 20: waiting on clamp extended sensor.
+EQU(Seq.Step,20)MOV(20,HMI.WaitCode);
+// Step 30: waiting on vision result.
+EQU(Seq.Step,30)MOV(30,HMI.WaitCode);
+// Step 40: waiting on robot cycle complete.
+EQU(Seq.Step,40)MOV(40,HMI.WaitCode);
+// Step 50: waiting on clamp retracted sensor.
+EQU(Seq.Step,50)MOV(50,HMI.WaitCode);
+// Step 60: waiting for the part to clear the stop.
+EQU(Seq.Step,60)MOV(60,HMI.WaitCode);
+// Step 70: waiting on MES acknowledge.
+EQU(Seq.Step,70)MOV(70,HMI.WaitCode);
+// Auto off: waiting on START.
+XIC(Saf.OK)XIO(Mode.Auto)XIO(Alm.Any)MOV(2,HMI.WaitCode);
+// Alarm active: waiting on FAULT RESET.
+XIC(Alm.Any)MOV(90,HMI.WaitCode);
+// Safety not reset: highest priority.
+XIO(Saf.OK)MOV(99,HMI.WaitCode);

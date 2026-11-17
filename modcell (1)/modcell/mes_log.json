@@ -1,0 +1,502 @@
+[
+ {
+  "serial": 1,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 2,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 3,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 4,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 5,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 6,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 7,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 8,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 9,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 10,
+  "result": 2,
+  "cycle_ms": 1460
+ },
+ {
+  "serial": 11,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 12,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 13,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 14,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 15,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 16,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 17,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 18,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 19,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 20,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 21,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 22,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 23,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 24,
+  "result": 2,
+  "cycle_ms": 1460
+ },
+ {
+  "serial": 25,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 26,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 27,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 28,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 29,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 30,
+  "result": 2,
+  "cycle_ms": 1460
+ },
+ {
+  "serial": 31,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 32,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 33,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 34,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 35,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 36,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 37,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 38,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 39,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 40,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 41,
+  "result": 1,
+  "cycle_ms": 7160
+ },
+ {
+  "serial": 42,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 43,
+  "result": 3,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 44,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 45,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 46,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 47,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 48,
+  "result": 2,
+  "cycle_ms": 1460
+ },
+ {
+  "serial": 49,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 50,
+  "result": 3,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 51,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 52,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 53,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 54,
+  "result": 2,
+  "cycle_ms": 1460
+ },
+ {
+  "serial": 55,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 56,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 57,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 58,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 59,
+  "result": 2,
+  "cycle_ms": 1460
+ },
+ {
+  "serial": 60,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 61,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 62,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 63,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 64,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 65,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 66,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 67,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 68,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 69,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 70,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 71,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 72,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 73,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 74,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 75,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 76,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 77,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 78,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 79,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 80,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 81,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 82,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 83,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 84,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 85,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 86,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 87,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 88,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 89,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 90,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 91,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 92,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 93,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 94,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 95,
+  "result": 2,
+  "cycle_ms": 1460
+ },
+ {
+  "serial": 96,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 97,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 98,
+  "result": 1,
+  "cycle_ms": 6070
+ },
+ {
+  "serial": 99,
+  "result": 2,
+  "cycle_ms": 1460
+ },
+ {
+  "serial": 100,
+  "result": 1,
+  "cycle_ms": 6070
+ }
+]

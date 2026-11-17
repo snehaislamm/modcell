@@ -1,0 +1,24 @@
+// MONITORING ONLY. The real safety function is the hardwired dual-channel safety relay
+// (docs/safety.md). This routine mirrors its state for sequencing, HMI and diagnostics.
+// E-stop healthy only when both NC channels are closed.
+XIC(I_EStop_A)XIC(I_EStop_B)OTE(Saf.EStopOK);
+// Guard door healthy only when both interlock channels are closed.
+XIC(I_Door_A)XIC(I_Door_B)OTE(Saf.DoorOK);
+// E-stop channel discrepancy: channels disagree for longer than 500 ms (wiring or contact fault).
+[XIC(I_EStop_A)XIO(I_EStop_B) ,XIO(I_EStop_A)XIC(I_EStop_B) ]TON(Saf.EStopDiscTmr,500,0);
+// Guard door channel discrepancy, same 500 ms window.
+[XIC(I_Door_A)XIO(I_Door_B) ,XIO(I_Door_A)XIC(I_Door_B) ]TON(Saf.DoorDiscTmr,500,0);
+// Latch the discrepancy fault; it survives the channels re-agreeing until a manual reset.
+[XIC(Saf.EStopDiscTmr.DN) ,XIC(Saf.DoorDiscTmr.DN) ]OTL(Saf.DiscFault);
+// Manual reset on the rising edge of the reset PB, only with both devices healthy (no auto restart).
+XIC(I_SafetyResetPB)ONS(Saf.ResetONS)XIC(Saf.EStopOK)XIC(Saf.DoorOK)[OTU(Saf.DiscFault) ,OTL(Saf.Armed) ];
+// Any trip or discrepancy disarms; re-arming always needs a new reset press.
+[XIO(Saf.EStopOK) ,XIO(Saf.DoorOK) ,XIC(Saf.DiscFault) ]OTU(Saf.Armed);
+// Safety OK summary used by every other routine.
+XIC(Saf.Armed)OTE(Saf.OK);
+// Enable conveyor drive (STO input) only when safety is OK.
+XIC(Saf.OK)OTE(O_Conv_SafeEnable);
+// Enable robot (external auto-stop circuit) only when safety is OK.
+XIC(Saf.OK)OTE(O_Rob_Enable);
+// Energize the pneumatic dump valve (air on) only when safety is OK.
+XIC(Saf.OK)OTE(O_Valve_Dump);

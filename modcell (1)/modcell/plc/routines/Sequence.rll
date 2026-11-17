@@ -1,0 +1,34 @@
+// Step 0 HOME: retract clamp and raise the stop gate.
+EQU(Seq.Step,0)XIC(Saf.OK)[OTU(Clamp.CmdExt) ,OTL(Gate.CmdExt) ];
+// Step 0 -> 10 once auto is on and both devices are home.
+EQU(Seq.Step,0)XIC(Seq.Permit)XIC(Clamp.AtRet)XIC(Gate.AtExt)MOV(10,Seq.Step);
+// Step 10 WAIT FOR PART: part must sit on the at-stop eye for 200 ms (debounce).
+EQU(Seq.Step,10)XIC(I_PE_AtStop)TON(Seq.SettleTmr,200,0);
+// Step 10 -> 20: part settled; clear cycle timer and result.
+EQU(Seq.Step,10)XIC(Seq.Permit)XIC(Seq.SettleTmr.DN)[MOV(0,Seq.CycleMs) ,MOV(0,Seq.Result) ,MOV(20,Seq.Step) ];
+// Cycle timer: add one scan (10 ms) per scan while a part is in process.
+GEQ(Seq.Step,20)ADD(Seq.CycleMs,10,Seq.CycleMs);
+// Step 20 CLAMP: command clamp extend.
+EQU(Seq.Step,20)OTL(Clamp.CmdExt);
+// Step 20 -> 30 when the clamp is confirmed extended.
+EQU(Seq.Step,20)XIC(Seq.Permit)XIC(Clamp.AtExt)MOV(30,Seq.Step);
+// Step 30 INSPECT, pass: hand the measured offsets to the robot (2D guidance), go fasten.
+EQU(Seq.Step,30)XIC(Seq.Permit)XIC(I_Vis_Done)XIC(I_Vis_Pass)[MOV(Vis_OffX,Rob_OffX) ,MOV(Vis_OffY,Rob_OffY) ,MOV(40,Seq.Step) ];
+// Step 30 INSPECT, fail: result 2 (vision reject), skip fastening.
+EQU(Seq.Step,30)XIC(Seq.Permit)XIC(I_Vis_Done)XIO(I_Vis_Pass)[MOV(2,Seq.Result) ,MOV(50,Seq.Step) ];
+// Step 40 FASTEN, robot OK: result 1 (good part).
+EQU(Seq.Step,40)XIC(Seq.Permit)XIC(I_Rob_Done)XIC(I_Rob_OK)[MOV(1,Seq.Result) ,MOV(50,Seq.Step) ];
+// Step 40 FASTEN, robot NOK (torque/angle out of window): result 3.
+EQU(Seq.Step,40)XIC(Seq.Permit)XIC(I_Rob_Done)XIO(I_Rob_OK)[MOV(3,Seq.Result) ,MOV(50,Seq.Step) ];
+// Step 50 UNCLAMP: retract clamp.
+EQU(Seq.Step,50)OTU(Clamp.CmdExt);
+// Step 50 -> 60: clamp home; set reject divert for bad parts and drop the stop gate.
+EQU(Seq.Step,50)XIC(Seq.Permit)XIC(Clamp.AtRet)[NEQ(Seq.Result,1)OTL(O_Divert_Reject) ,OTU(Gate.CmdExt) ,MOV(60,Seq.Step) ];
+// Step 60 RELEASE: at-stop eye must stay clear for 300 ms to prove the part left.
+EQU(Seq.Step,60)XIO(I_PE_AtStop)TON(Seq.ClearTmr,300,0);
+// Step 60 -> 70: raise the gate for the next part and report.
+EQU(Seq.Step,60)XIC(Seq.Permit)XIC(Seq.ClearTmr.DN)[OTL(Gate.CmdExt) ,MOV(70,Seq.Step) ];
+// Step 70 REPORT done on MES ack: count the part, reset divert, back to wait for part.
+EQU(Seq.Step,70)XIC(MES.Ack)[ADD(Cnt.Total,1,Cnt.Total) ,EQU(Seq.Result,1)ADD(Cnt.Good,1,Cnt.Good) ,NEQ(Seq.Result,1)ADD(Cnt.Reject,1,Cnt.Reject) ,OTU(O_Divert_Reject) ,MOV(Seq.CycleMs,Seq.LastCycleMs) ,MOV(10,Seq.Step) ];
+// Fault reset re-homes the station (step 0) so a part left mid-cycle is handled safely.
+XIC(Alm.ResetReq)MOV(0,Seq.Step);

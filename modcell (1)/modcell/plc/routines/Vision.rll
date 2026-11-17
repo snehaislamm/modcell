@@ -1,0 +1,4 @@
+// Raise the trigger when the camera is ready, seal it in, hold until done (level handshake).
+EQU(Seq.Step,30)XIC(Seq.Permit)[XIC(I_Vis_Ready) ,XIC(O_Vis_Trigger) ]XIO(I_Vis_Done)OTE(O_Vis_Trigger);
+// Vision watchdog: no result within 1 s of entering inspect.
+EQU(Seq.Step,30)XIC(Seq.Permit)TON(Vis.Tmo,1000,0);

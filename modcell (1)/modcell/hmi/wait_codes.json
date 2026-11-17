@@ -1,0 +1,13 @@
+{
+  "1":  {"text": "Homing: clamp retract / gate up", "check": "I_Clamp_Ret, I_Gate_Ext sensors; air pressure"},
+  "2":  {"text": "Auto off - press START", "check": "Station ready; STOP PB released"},
+  "10": {"text": "Waiting for part at stop", "check": "Upstream supply; I_PE_AtStop eye alignment"},
+  "20": {"text": "Clamp extended sensor", "check": "O_Clamp_ExtSol on? I_Clamp_Ext reed switch; air"},
+  "30": {"text": "Vision result", "check": "Camera online; trigger O_Vis_Trigger; lighting"},
+  "40": {"text": "Robot cycle complete", "check": "Robot in AUTO; job 1 loaded; I_Rob_Busy"},
+  "50": {"text": "Clamp retracted sensor", "check": "O_Clamp_RetSol on? I_Clamp_Ret reed switch"},
+  "60": {"text": "Part to clear the stop", "check": "Gate down; conveyor running; downstream not full"},
+  "70": {"text": "MES acknowledge", "check": "MES connection; station registered"},
+  "90": {"text": "Alarm active - fix cause, press FAULT RESET", "check": "See first-out alarm"},
+  "99": {"text": "Safety circuit not reset", "check": "E-stops pulled out, guard door closed, press SAFETY RESET"}
+}

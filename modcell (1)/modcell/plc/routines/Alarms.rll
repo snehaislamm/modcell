@@ -1,0 +1,28 @@
+// One-scan fault reset request on the FAULT RESET PB rising edge.
+XIC(I_FaultResetPB)ONS(Alm.ResetONS)OTE(Alm.ResetReq);
+// Latch vision timeout.
+XIC(Vis.Tmo.DN)OTL(Alm.VisionTmo);
+// Latch robot timeout.
+XIC(Rob.Tmo.DN)OTL(Alm.RobotTmo);
+// Latch MES timeout.
+XIC(MES.Tmo.DN)OTL(Alm.MESTmo);
+// Latch conveyor VFD fault.
+XIC(I_Conv_Fault)OTL(Alm.ConvFault);
+// Fault reset clears the latched alarms (a condition still present re-latches next scan).
+XIC(Alm.ResetReq)[OTU(Alm.VisionTmo) ,OTU(Alm.RobotTmo) ,OTU(Alm.MESTmo) ,OTU(Alm.ConvFault) ];
+// Summary: any active alarm stops auto.
+[XIC(Clamp.Fault) ,XIC(Gate.Fault) ,XIC(Alm.VisionTmo) ,XIC(Alm.RobotTmo) ,XIC(Alm.MESTmo) ,XIC(Alm.ConvFault) ]OTE(Alm.Any);
+// First-out capture (code 1): clamp cylinder fault.
+EQU(Alm.FirstOut,0)XIC(Clamp.Fault)MOV(1,Alm.FirstOut);
+// First-out capture (code 2): stop gate cylinder fault.
+EQU(Alm.FirstOut,0)XIC(Gate.Fault)MOV(2,Alm.FirstOut);
+// First-out capture (code 3): vision timeout.
+EQU(Alm.FirstOut,0)XIC(Alm.VisionTmo)MOV(3,Alm.FirstOut);
+// First-out capture (code 4): robot timeout.
+EQU(Alm.FirstOut,0)XIC(Alm.RobotTmo)MOV(4,Alm.FirstOut);
+// First-out capture (code 5): MES timeout.
+EQU(Alm.FirstOut,0)XIC(Alm.MESTmo)MOV(5,Alm.FirstOut);
+// First-out capture (code 6): conveyor VFD fault.
+EQU(Alm.FirstOut,0)XIC(Alm.ConvFault)MOV(6,Alm.FirstOut);
+// Clear first-out once everything is reset.
+XIO(Alm.Any)MOV(0,Alm.FirstOut);

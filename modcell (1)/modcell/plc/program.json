@@ -1,0 +1,11 @@
+{
+  "controller": "modcell_station_10",
+  "scan_ms": 10,
+  "main": "MainRoutine",
+  "routines": ["MainRoutine", "Safety", "Modes", "Sequence", "Conveyor", "Vision", "Robot", "MES", "Alarms", "Indicators"],
+  "instances": [
+    {"template": "Cylinder", "prefix": "Clamp"},
+    {"template": "Cylinder", "prefix": "Gate"}
+  ],
+  "init": {"I_StopPB": 1, "Gate.CmdExt": 1, "Conv.SpeedSet": 60}
+}

@@ -1,0 +1,16 @@
+// {p}: extend solenoid follows the command; both solenoids drop with safety (valve holds position).
+XIC({p}.CmdExt)XIC(Saf.OK)OTE(O_{p}_ExtSol);
+// {p}: retract solenoid when the command is off.
+XIO({p}.CmdExt)XIC(Saf.OK)OTE(O_{p}_RetSol);
+// {p}: confirmed extended = extend sensor on and retract sensor off.
+XIC(I_{p}_Ext)XIO(I_{p}_Ret)OTE({p}.AtExt);
+// {p}: confirmed retracted = retract sensor on and extend sensor off.
+XIC(I_{p}_Ret)XIO(I_{p}_Ext)OTE({p}.AtRet);
+// {p}: motion watchdog, commanded end not reached within 2 s.
+[XIC({p}.CmdExt)XIO({p}.AtExt) ,XIO({p}.CmdExt)XIO({p}.AtRet) ]XIC(Saf.OK)TON({p}.MoveTmr,2000,0);
+// {p}: both end sensors on for 100 ms = sensor or wiring fault.
+XIC(I_{p}_Ext)XIC(I_{p}_Ret)TON({p}.SensTmr,100,0);
+// {p}: latch the device fault.
+[XIC({p}.MoveTmr.DN) ,XIC({p}.SensTmr.DN) ]OTL({p}.Fault);
+// {p}: fault reset clears the latch and restarts both watchdogs (re-latches if the fault persists).
+XIC(Alm.ResetReq)[OTU({p}.Fault) ,RES({p}.MoveTmr) ,RES({p}.SensTmr) ];

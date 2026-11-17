@@ -1,0 +1,22 @@
+// Safety is solved first so every later routine sees this scan's Saf.OK.
+JSR(Safety);
+// Operator modes: auto start, end-of-cycle stop, drop out on fault or safety loss.
+JSR(Modes);
+// Station sequence (step numbers 0-70) issues device commands.
+JSR(Sequence);
+// Device layer: one tested Cylinder template, instanced for the clamp and the stop gate.
+JSR(Cylinder_Clamp);
+// Stop gate instance of the Cylinder template (extended = blocking).
+JSR(Cylinder_Gate);
+// Conveyor VFD run and speed reference.
+JSR(Conveyor);
+// Vision camera trigger handshake.
+JSR(Vision);
+// Fastening robot handshake.
+JSR(Robot);
+// Part record handshake to the MES.
+JSR(MES);
+// Alarm latching, first-out capture and fault reset.
+JSR(Alarms);
+// Stack light and HMI "waiting on" diagnostic code.
+JSR(Indicators);
